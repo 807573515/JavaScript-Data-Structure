@@ -1,1 +1,2 @@
-# JavaScript-Data-Structure
+# 链表  
+LinkList.js  
