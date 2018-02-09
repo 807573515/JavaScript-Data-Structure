@@ -99,7 +99,38 @@ function insertSort (arr) {
     }
     return temp
 }
-let result = insertSort([1,4,6,6,5,3])
+
+// 快速排序
+function quickSort (arr) {
+    function qSort (arr,low,high){
+        let pivot // 中枢值下标
+        if (low<high) {
+            pivot = partition(arr,low,high)
+
+            qSort(arr,low,pivot-1)
+            qSort(arr,pivot+1,high)
+        }
+        
+        return arr
+    }
+    function partition (arr,low,high) { // 计算中枢值下标
+        let pivotVal = arr[low]
+        while (low<high) {
+            while(low<high&&pivotVal<=arr[high]){
+                high--
+            }    
+            swap(arr,low,high)
+            
+            while(low<high&&pivotVal>=arr[low]){
+                low++
+            } 
+            swap(arr,low,high)  
+        }
+        return low // 返回low或high均可 因为low=high
+    }
+    return qSort(arr,0,arr.length-1)
+}
+let result = quickSort([1,3,4,2])
 console.log(result)
 
 
